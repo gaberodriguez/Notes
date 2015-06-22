@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="base.css">
@@ -7,8 +9,6 @@
   </title>
 </head>
 <body>
-  {% extends "base.html" %}
-  {% block content %}
   <h1 id="section-1">
     Introduction to Programming
   </h1>
@@ -148,6 +148,6 @@
       </div>
     </div>
   </div>
-  {% endblock %}
 </body>
 </html>
+{% endblock %}

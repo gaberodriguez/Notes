@@ -4,6 +4,7 @@ import os
 import jinja2
 import webapp2
 
+
 template_dir = os.path.join(os.path.dirname(__file__),'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape = True)
 
@@ -24,16 +25,17 @@ class Handler(webapp2.RequestHandler):
     def render(self, template, **kw):
     	self.write(self.render_str(template, **kw))
 
-#class addproduct(webapp2.RequestHandler):
-#    def get(self):
-#        template = JINJA_ENVIROMENT.get_template('stage1.html')
-#        self.response.write(template.render())
-
+class PostWall(Handler):
+    def get(self):
+        self.redirect('/templates/stage1.html')
 
 class MainPage(Handler):
     def get(self):
-       self.render("stage1.html")
+        #concepts = self.request.get_all('concept')
+        self.render("base.html")
+       #self.redirect('H:\desk\My Documents\Udacity Portfolio\Notes\templates\stage2.html#lesson-1')
 
 application = webapp2.WSGIApplication([
     ('/', MainPage),
+    ('/stage1.html', PostWall),
     ], debug=True)
